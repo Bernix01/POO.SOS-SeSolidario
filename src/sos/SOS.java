@@ -131,7 +131,10 @@ public class SOS {
                         System.out.println(" ");
                     }
                 }
-              mostrarMenuUsuario();
+              int b=mostrarMenuUsuario(centros);
+               if (b == 5) {
+                    op = 5;
+                }
             }
         }
 
