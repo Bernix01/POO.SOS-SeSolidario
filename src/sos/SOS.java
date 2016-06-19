@@ -128,6 +128,7 @@ public class SOS {
                         System.out.println(" ");
                     }
                 }
+                mostrarMenuUsuario();
             }
         }
 
