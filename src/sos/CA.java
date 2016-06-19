@@ -18,6 +18,11 @@ public class CA {
     private String direccion;
     private String fb;
     private String twitter;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
     private List<Necesidad> necesidades;
     
     public long getLatitud() {
@@ -76,7 +81,7 @@ public class CA {
         this.necesidades = necesidades;
     }
 
-    public CA(long latitud, long longitud, String nombre, String direccion, String fb, String twitter) {
+    public CA(int id,long latitud, long longitud, String nombre, String direccion, String fb, String twitter) {
         this.latitud = latitud;
         this.longitud = longitud;
         this.nombre = nombre;
@@ -84,9 +89,10 @@ public class CA {
         this.fb = fb;
         this.twitter = twitter;
         this.necesidades = new LinkedList<>();
+        this.id = id;
     }
 
-    public CA(long latitud, long longitud, String nombre, String direccion, String fb, String twitter, List<Necesidad> necesidades) {
+    public CA(int id, long latitud, long longitud, String nombre, String direccion, String fb, String twitter, List<Necesidad> necesidades) {
         this.latitud = latitud;
         this.longitud = longitud;
         this.nombre = nombre;
@@ -94,6 +100,29 @@ public class CA {
         this.fb = fb;
         this.twitter = twitter;
         this.necesidades = necesidades;
+        this.id = id;
+    }
+
+    public CA() {
+    }
+
+    public String forArchive() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(id);
+        sb.append("\\|");
+        sb.append(latitud);
+        sb.append("\\|");
+        sb.append(longitud);
+        sb.append("\\|");
+        sb.append(nombre);
+        sb.append("\\|");
+        sb.append(direccion);
+        sb.append("\\|");
+        sb.append(fb);
+        sb.append("\\|");
+        sb.append(twitter);
+        sb.append("\\|");
+        return sb.toString(); 
     }
     
 
