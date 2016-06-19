@@ -5,6 +5,7 @@
  */
 package sos;
   import java.util.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author whugo
@@ -74,6 +75,7 @@ public class SOS {
     
     public static void main(String[] args) {
         // TODO code application logic here
+       ArrayList<CA> centros = (ArrayList<CA>) DatabaseHelper.loadCA();
        int op=5;
        while (op==5){
        System.out.println("SOS: Se Solidario");     
@@ -129,6 +131,18 @@ public class SOS {
        }
        }
        
+    }
+    
+    public static int mostrarMenuUsuario(){
+        int opt = -1;
+        while(opt != 0){
+            StringBuilder sb = new StringBuilder();
+            sb.append(" 1. Ver centros de acopios ");
+            sb.append(" 2. Donar                  ");
+            JOptionPane.showMessageDialog(null, sb.toString(), "Usuario", 1);
+        }
+        
+        return 0;
     }
     
 }
