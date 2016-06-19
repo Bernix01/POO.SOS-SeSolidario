@@ -4,14 +4,16 @@
  * and open the template in the editor.
  */
 package sos;
-   
+
 import java.util.LinkedList;
 import java.util.List;
+
 /**
  *
  * @author whugo
  */
 public class CA {
+
     private long latitud;
     private long longitud;
     private String nombre;
@@ -20,11 +22,40 @@ public class CA {
     private String twitter;
     private int id;
 
+    CA(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
     private List<Necesidad> necesidades;
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CA other = (CA) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
     public long getLatitud() {
         return latitud;
     }
@@ -81,7 +112,7 @@ public class CA {
         this.necesidades = necesidades;
     }
 
-    public CA(int id,long latitud, long longitud, String nombre, String direccion, String fb, String twitter) {
+    public CA(int id, long latitud, long longitud, String nombre, String direccion, String fb, String twitter) {
         this.latitud = latitud;
         this.longitud = longitud;
         this.nombre = nombre;
@@ -122,8 +153,7 @@ public class CA {
         sb.append("\\|");
         sb.append(twitter);
         sb.append("\\|");
-        return sb.toString(); 
+        return sb.toString();
     }
-    
 
 }
