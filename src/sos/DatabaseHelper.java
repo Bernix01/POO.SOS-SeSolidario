@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +30,7 @@ public class DatabaseHelper {
         String linea;
         String datos[];
         CA r;
-        LinkedList<CA> lista = new LinkedList<>();
+        ArrayList<CA> lista = new ArrayList<>();
         try {
             fr = new FileReader(fileName);
             br = new BufferedReader(fr);
@@ -57,7 +57,7 @@ public class DatabaseHelper {
         return lista;
     }
 
-    public static int save(LinkedList<CA> nuevaData) {
+    public static int save(ArrayList<CA> nuevaData) {
         FileWriter fileWriter;
         try {
             fileWriter = new FileWriter(fileName);
