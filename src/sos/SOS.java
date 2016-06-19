@@ -19,7 +19,7 @@ public class SOS {
     static int select = -1;
     static String nom, dir, fb, twi, nnom, ndir;
     static int id;
-    static long lat, lon, nlat, nlon;
+    static float lat, lon, nlat, nlon;
     static List nec;
 
     /**
@@ -69,9 +69,9 @@ public class SOS {
         System.out.println("Introduzca cuenta de Twitter :");
         twi = scanner.next();
         System.out.println("Introduzca latitud :");
-        lat = scanner.nextLong();
+        lat = scanner.nextFloat();
         System.out.println("Introduzca longitud :");
-        lon = scanner.nextLong();
+        lon = scanner.nextFloat();
         int idtmp = 0;
         System.out.println(lon);
         while (centros.contains(new CA(idtmp))) {
@@ -114,9 +114,9 @@ public class SOS {
                     System.out.println("Introduzca nueva direccion :");
                     ndir = scanner.next();
                     System.out.println("Introduzca nueva latitud :");
-                    nlat = scanner.nextLong();
+                    nlat = scanner.nextFloat();
                     System.out.println("Introduzca nueva longitud :");
-                    nlon = scanner.nextLong();
+                    nlon = scanner.nextFloat();
                     dd.setNombre(nnom);
                     dd.setDireccion(ndir);
                     dd.setLatitud(nlat);
