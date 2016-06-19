@@ -61,22 +61,25 @@ public class SOS {
 
     public static int registrarCentroAcopio(ArrayList<CA> centros) {
         StringBuilder vj = new StringBuilder();
-        vj.append("Introduzca nombre :");
+        System.out.println("Introduzca nombre :");
         nom = scanner.next();
-        vj.append("Introduzca direccion :");
+        System.out.println("Introduzca direccion :");
         dir = scanner.next();
-        vj.append("Introduzca cuenta de Facebook :");
+        System.out.println("Introduzca cuenta de Facebook :");
         fb = scanner.next();
-        vj.append("Introduzca cuenta de Twitter :");
+        System.out.println("Introduzca cuenta de Twitter :");
         twi = scanner.next();
-        vj.append("Introduzca latitud :");
-        lat = Long.parseLong(JOptionPane.showInputDialog(null, vj.toString(), "Latitud", 1));
-        vj.append("Introduzca longitud :");
-        lon = Long.parseLong(JOptionPane.showInputDialog(null, vj.toString(), "Longitud", 1));
-        int id= 0;
-        while(centros.contains(new CA(id)))
-            id = ThreadLocalRandom.current().nextInt();
-        CA centro = new CA(id);
+        System.out.println("Introduzca latitud :");
+        lat = scanner.nextLong();
+        System.out.println("Introduzca longitud :");
+        lon = scanner.nextLong();
+        int idtmp= 0;
+        System.out.println(lon);
+        while(centros.contains(new CA(idtmp))){
+            System.out.println(idtmp);
+            idtmp = ThreadLocalRandom.current().nextInt();
+        }
+        CA centro = new CA(idtmp);
         centro.setNombre(nom);
         centro.setDireccion(dir);
         centro.setFb(fb);
