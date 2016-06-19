@@ -58,7 +58,6 @@ public class DatabaseHelper {
 
     public static int save(LinkedList<CA> nuevaData) {
         FileWriter fileWriter;
-        int i = 0;
         try {
             fileWriter = new FileWriter(fileName);
             // Always wrap FileWriter in BufferedWriter.
