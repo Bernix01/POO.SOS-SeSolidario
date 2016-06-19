@@ -29,7 +29,7 @@ public class CA {
         return latitud;
     }
 
-    public void setLatitud(int latitud) {
+    public void setLatitud(long latitud) {
         this.latitud = latitud;
     }
 
@@ -37,7 +37,7 @@ public class CA {
         return longitud;
     }
 
-    public void setLongitud(int longitud) {
+    public void setLongitud(long longitud) {
         this.longitud = longitud;
     }
 

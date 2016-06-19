@@ -24,7 +24,7 @@ public class SOS {
     /**
      * @param args the command line arguments
      */
-    public static int mostrarMenuAdmin() {
+    public static int mostrarMenuAdmin(ArrayList centros) {
 
         while (select != 0) {
 
@@ -41,7 +41,7 @@ public class SOS {
             }
             switch (select) {
                 case 1:
-                    return registrarCentroAcopio();
+                    return registrarCentroAcopio(centros);
                 case 2:
                     return 22;
                 case 3:
@@ -58,7 +58,7 @@ public class SOS {
         return 0;
     }
 
-    public static int registrarCentroAcopio() {
+    public static int registrarCentroAcopio(ArrayList centros) {
         StringBuilder vj = new StringBuilder();
         vj.append("Introduzca nombre :");
         nom = scanner.next();
@@ -72,6 +72,13 @@ public class SOS {
         lat = Long.parseLong(JOptionPane.showInputDialog(null, vj.toString(), "Latitud", 1));
         vj.append("Introduzca longitud :");
         lon = Long.parseLong(JOptionPane.showInputDialog(null, vj.toString(), "Longitud", 1));
+        CA centro = new CA();
+        centro.setNombre(nom);
+        centro.setDireccion(dir);
+        centro.setFb(fb);
+        centro.setTwitter(twi);
+        centro.setLatitud(lat);
+        centro.setLongitud(lon);
         return 0;
 
     }
@@ -109,9 +116,11 @@ public class SOS {
                         System.out.println(" ");
                     }
                 }
-                int b = mostrarMenuAdmin();
+                int b = mostrarMenuAdmin(centros);
                 if (b == 5) {
                     op = 5;
+                }else if (b==0){
+                    op=0;
                 }
 
             } else if (n == 2) {
@@ -136,9 +145,16 @@ public class SOS {
               int b=mostrarMenuUsuario(centros);
                if (b == 5) {
                     op = 5;
+                }else if (b==0){
+                    op=0;
                 }
+              
+            }
+            else{
+                op=3;
             }
         }
+        System.out.println("Chao");
 
     }
 
