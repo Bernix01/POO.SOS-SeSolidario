@@ -21,7 +21,7 @@ public class SOS {
     /**
      * @param args the command line arguments
      */
-    private int mostrarMenuAdmin(){
+    public int mostrarMenuAdmin(){
  
     while(select != 0){
         
