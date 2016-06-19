@@ -5,6 +5,7 @@
  */
 package sos;
   import java.util.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author whugo
@@ -139,8 +140,9 @@ public class SOS {
         int opt = -1;
         while(opt != 0){
             StringBuilder sb = new StringBuilder();
-            System.out.println(" 1. Ver centros de acopios ");
-            System.out.println(" 2. Donar                  ");
+            sb.append(" 1. Ver centros de acopios ");
+            sb.append(" 2. Donar                  ");
+            JOptionPane.showMessageDialog(null, sb.toString(), "Usuario", 1);
         }
         
         return 0;
