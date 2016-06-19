@@ -107,7 +107,7 @@ public class SOS {
        
     }
     
-    public int mostrarMenuUsuario(){
+    public static int mostrarMenuUsuario(){
         int opt = -1;
         while(opt != 0){
             StringBuilder sb = new StringBuilder();
