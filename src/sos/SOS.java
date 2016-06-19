@@ -20,13 +20,17 @@ public class SOS {
     private int mostrarMenuAdmin(){
  
     while(select != 0){
-        try{
+        
             System.out.println("ELIGE UNA OPCION:  \n");
             System.out.println("1. Registrar Centro de Acopio\n");
             System.out.println("2. Administrar Centro de Acopio\n");    
             System.out.println("3. Volver\n");
             System.out.println("0. Salir\n");
+            try{
             select = Integer.parseInt(scanner.nextLine());
+            }catch(Exception e){
+				System.out.println("Error!");
+			}
             switch(select){
 				case 1: 
                                         return 3;
@@ -37,21 +41,21 @@ public class SOS {
                                 case 0: 
 					return 0;
 				default:
-					System.out.println("Por favor, elegir otro número!");break;
+					System.out.println("Por favor, elegir otro número!\n");
+                                        break;
+                                        
 				}
             
-                                System.out.println("\n"); //
                                 
-                            }catch(Exception e){
-				System.out.println("Error!");
-			}
+                                
+                            
             }
-    
+            return 0;
         }
     
     private int registrarCentroAcopio(){
     
-        
+        return 0;
     
     }
     
