@@ -90,7 +90,7 @@ public class SOS {
             System.out.println(" ");
             }
             }
-          int b =mostarMenuAdmin();
+          int b =mostrarMenuAdmin();
           if (b==5){
               op=5;       
           }
