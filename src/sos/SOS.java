@@ -92,12 +92,7 @@ public class SOS {
             }
           int b =mostarMenuAdmin();
           if (b==5){
-              op=5;
-              
- 
-              
-              
-              
+              op=5;       
           }
             
             
