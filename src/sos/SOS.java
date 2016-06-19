@@ -134,16 +134,25 @@ public class SOS {
 
     }
 
-    public static int mostrarMenuUsuario() {
+    public static int mostrarMenuUsuario(ArrayList<CA> centros) {
         int opt = -1;
         while (opt != 0) {
             StringBuilder sb = new StringBuilder();
-            sb.append(" 1. Ver centros de acopios ");
+            sb.append(" 1. Ver centros de acopios \n");
             sb.append(" 2. Donar                  ");
-            opt = Integer.parseInt(JOptionPane.showInputDialog(null, sb.toString(), "Usuario", 1));
+            Scanner sc = new Scanner(System.in);
+            opt = sc.nextInt();
+            switch(opt){
+                case 1:
+                    enlistar();
+            }
         }
 
         return 0;
+    }
+
+    private static void enlistar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
