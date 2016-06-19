@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class CA {
 
-    private long latitud;
-    private long longitud;
+    private float latitud;
+    private float longitud;
     private String nombre;
     private String direccion;
     private String fb;
@@ -56,19 +56,19 @@ public class CA {
         return true;
     }
 
-    public long getLatitud() {
+    public float getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(long latitud) {
+    public void setLatitud(float latitud) {
         this.latitud = latitud;
     }
 
-    public long getLongitud() {
+    public float getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(long longitud) {
+    public void setLongitud(float longitud) {
         this.longitud = longitud;
     }
 
@@ -112,7 +112,7 @@ public class CA {
         this.necesidades = necesidades;
     }
 
-    public CA(int id, long latitud, long longitud, String nombre, String direccion, String fb, String twitter) {
+    public CA(int id, float latitud, float longitud, String nombre, String direccion, String fb, String twitter) {
         this.latitud = latitud;
         this.longitud = longitud;
         this.nombre = nombre;
@@ -123,7 +123,7 @@ public class CA {
         this.id = id;
     }
 
-    public CA(int id, long latitud, long longitud, String nombre, String direccion, String fb, String twitter, List<Necesidad> necesidades) {
+    public CA(int id, float latitud, float longitud, String nombre, String direccion, String fb, String twitter, List<Necesidad> necesidades) {
         this.latitud = latitud;
         this.longitud = longitud;
         this.nombre = nombre;
