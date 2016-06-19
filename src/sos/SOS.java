@@ -38,7 +38,7 @@ public class SOS {
 			}
             switch(select){
 				case 1: 
-                                        return 3;
+                                        return registrarCentroAcopio();                                       
 				case 2: 
                                         return 22;
 				case 3: 
@@ -55,7 +55,7 @@ public class SOS {
             return 0;
         }
     
-    private int registrarCentroAcopio(){
+    public static int registrarCentroAcopio(){
                 System.out.println("Introduzca nombre :\n");
                 nom = scanner.next();
                 System.out.println("Introduzca direccion :\n");
