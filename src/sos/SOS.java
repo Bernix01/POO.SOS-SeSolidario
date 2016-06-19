@@ -62,6 +62,7 @@ public class SOS {
     
     public static void main(String[] args) {
         // TODO code application logic here
+       ArrayList<CA> centros = (ArrayList<CA>) DatabaseHelper.loadCA();
        System.out.println("SOS: Se Solidario");     
        System.out.println("Menu de Opciones");
        System.out.println("1. Ingresar como administrador");
@@ -104,6 +105,17 @@ public class SOS {
        }
        
        
+    }
+    
+    public int mostrarMenuUsuario(){
+        int opt = -1;
+        while(opt != 0){
+            StringBuilder sb = new StringBuilder();
+            System.out.println(" 1. Ver centros de acopios ");
+            System.out.println(" 2. Donar                  ");
+        }
+        
+        return 0;
     }
     
 }
