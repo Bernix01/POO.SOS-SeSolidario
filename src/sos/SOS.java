@@ -174,6 +174,12 @@ public class SOS {
         centro.getNecesidades().forEach(necesidad -> {
             System.out.println(necesidad);
         });
+        int opt = -1;
+        while(opt <0 && opt > centro.getNecesidades().size()){
+            System.out.println("Escoga el item que desea donar: \n");
+            opt = new Scanner(System.in).nextInt();
+        }
+        System.out.println("Su donación fue realizada con éxito! Gracias por ser solidario.");
         return 5;
     }
     
