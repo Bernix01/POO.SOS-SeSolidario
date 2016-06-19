@@ -25,7 +25,7 @@ public class SOS {
     /**
      * @param args the command line arguments
      */
-    public static int mostrarMenuAdmin(ArrayList centros) {
+    public static int mostrarMenuAdmin(ArrayList<CA> centros) {
 
         while (select != 0) {
 
@@ -59,7 +59,7 @@ public class SOS {
         return 0;
     }
 
-    public static int registrarCentroAcopio(ArrayList centros) {
+    public static int registrarCentroAcopio(ArrayList<CA> centros) {
         StringBuilder vj = new StringBuilder();
         vj.append("Introduzca nombre :");
         nom = scanner.next();
@@ -83,6 +83,8 @@ public class SOS {
         centro.setTwitter(twi);
         centro.setLatitud(lat);
         centro.setLongitud(lon);
+        centros.add(centro);
+        DatabaseHelper.save(centros);
         return 0;
 
     }
