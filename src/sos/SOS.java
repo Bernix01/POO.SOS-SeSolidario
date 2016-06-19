@@ -139,7 +139,7 @@ public class SOS {
             StringBuilder sb = new StringBuilder();
             sb.append(" 1. Ver centros de acopios ");
             sb.append(" 2. Donar                  ");
-            JOptionPane.showMessageDialog(null, sb.toString(), "Usuario", 1);
+            opt = Integer.parseInt(JOptionPane.showInputDialog(null, sb.toString(), "Usuario", 1));
         }
 
         return 0;
