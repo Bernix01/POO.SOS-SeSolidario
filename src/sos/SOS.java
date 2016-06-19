@@ -99,6 +99,8 @@ public class SOS {
                     String cont = sc.next();
                     if (usuario.equals(us) && contraseña.equals(cont)) {
                         a = false;
+                        
+                        System.out.println("Inicio sesion exitosamente");
                     } else {
                         System.out.println("Usuario o contraseña incorrecta");
                         System.out.println("Intentelo de nuevo");
@@ -122,13 +124,14 @@ public class SOS {
                     String cont = sc.next();
                     if (usuario.equals(us) && contraseña.equals(cont)) {
                         a = false;
+                        System.out.println("Inicio sesion exitosamente");
                     } else {
                         System.out.println("Usuario o contraseña incorrecta");
                         System.out.println("Intentelo de nuevo");
                         System.out.println(" ");
                     }
                 }
-                mostrarMenuUsuario();
+              mostrarMenuUsuario();
             }
         }
 
