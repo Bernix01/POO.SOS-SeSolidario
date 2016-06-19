@@ -131,7 +131,7 @@ public class SOS {
                         System.out.println(" ");
                     }
                 }
-                int b=mostrarMenuUsuario();
+              mostrarMenuUsuario();
             }
         }
 
