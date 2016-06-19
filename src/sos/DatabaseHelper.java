@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +24,7 @@ public class DatabaseHelper {
 
     private static final String fileName = "datos.dat";
 
-    public static LinkedList<CA> loadCA() {
+    public static List<CA> loadCA() {
         FileReader fr;
         BufferedReader br;
         String linea;
