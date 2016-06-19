@@ -6,6 +6,7 @@
 package sos;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JOptionPane;
 
 /**
@@ -72,7 +73,10 @@ public class SOS {
         lat = Long.parseLong(JOptionPane.showInputDialog(null, vj.toString(), "Latitud", 1));
         vj.append("Introduzca longitud :");
         lon = Long.parseLong(JOptionPane.showInputDialog(null, vj.toString(), "Longitud", 1));
-        CA centro = new CA();
+        int id= 0;
+        while(centros.contains(new CA(id)))
+            id = ThreadLocalRandom.current().nextInt();
+        CA centro = new CA(id);
         centro.setNombre(nom);
         centro.setDireccion(dir);
         centro.setFb(fb);
