@@ -62,7 +62,8 @@ public class SOS {
     
     public static void main(String[] args) {
         // TODO code application logic here
-        
+       int op=5;
+       while (op==5){
        System.out.println("SOS: Se Solidario");     
        System.out.println("Menu de Opciones");
        System.out.println("1. Ingresar como administrador");
@@ -89,8 +90,12 @@ public class SOS {
             System.out.println(" ");
             }
             }
-          int b = mostarMenuAdmin();
+          int b =mostarMenuAdmin();
           if (b==5){
+              op=5;
+              
+ 
+              
               
               
           }
@@ -115,7 +120,7 @@ public class SOS {
             System.out.println(" ");}
             }
        }
-       
+       }
        
     }
     
