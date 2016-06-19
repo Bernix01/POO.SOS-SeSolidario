@@ -17,9 +17,9 @@ public class SOS {
 
     static Scanner scanner = new Scanner(System.in); //Sirve para recoger texto por consola
     static int select = -1;
-    static String nom, dir, fb, twi;
+    static String nom, dir, fb, twi, nnom, ndir;
     static int id;
-    static long lat, lon;
+    static long lat, lon, nlat, nlon;
     static List nec;
 
     /**
@@ -38,7 +38,7 @@ public class SOS {
             try {
                 select = Integer.parseInt(JOptionPane.showInputDialog(null, jv.toString(), "Opción", 1));
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,"Error!");
+                JOptionPane.showMessageDialog(null, "Error!");
             }
             switch (select) {
                 case 1:
@@ -60,7 +60,6 @@ public class SOS {
     }
 
     public static int registrarCentroAcopio(ArrayList<CA> centros) {
-        StringBuilder vj = new StringBuilder();
         System.out.println("Introduzca nombre :");
         nom = scanner.next();
         System.out.println("Introduzca direccion :");
@@ -73,9 +72,9 @@ public class SOS {
         lat = scanner.nextLong();
         System.out.println("Introduzca longitud :");
         lon = scanner.nextLong();
-        int idtmp= 0;
+        int idtmp = 0;
         System.out.println(lon);
-        while(centros.contains(new CA(idtmp))){
+        while (centros.contains(new CA(idtmp))) {
             System.out.println(idtmp);
             idtmp = ThreadLocalRandom.current().nextInt();
         }
@@ -91,24 +90,58 @@ public class SOS {
         return 0;
 
     }
-    
-    public static int administrarCentroAcopio(ArrayList<CA> centros){
-        enlistar(centros);
+
+    public static int administrarCentroAcopio(ArrayList<CA> centros) {
         int aca = -1;
-        while (aca != 0){
+        while (aca != 0) {
             StringBuilder va = new StringBuilder();
             va.append("¿QUÉ INFORMACIÓN DESEA MODIFICAR?:");
             va.append("1. Centro de Acopio");
             va.append("2. Necesidades del Centro de Acopio");
             va.append("3. Volver");
             va.append("0. Salir");
-              try {
-                select = Integer.parseInt(JOptionPane.showInputDialog(null, va.toString(), "Opción", 1));
+            try {
+                aca = Integer.parseInt(JOptionPane.showInputDialog(null, va.toString(), "Opción", 1));
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,"Error!");
+                JOptionPane.showMessageDialog(null, "Error!");
             }
-        }    
-            
+            switch (aca) {
+
+                case 1:
+                    CA dd = escogerCentro(centros);
+                    System.out.println("Introduzca nuevo nombre :");
+                    nnom = scanner.next();
+                    System.out.println("Introduzca nueva direccion :");
+                    ndir = scanner.next();
+                    System.out.println("Introduzca nueva latitud :");
+                    nlat = scanner.nextLong();
+                    System.out.println("Introduzca nueva longitud :");
+                    nlon = scanner.nextLong();
+                    dd.setNombre(nnom);
+                    dd.setDireccion(ndir);
+                    dd.setLatitud(nlat);
+                    dd.setLongitud(nlon);
+                    DatabaseHelper.save(centros);
+                case 2:
+                    CA cc = escogerCentro(centros);
+                    cc.getNecesidades().forEach(necesidad -> {
+                        System.out.println(necesidad);
+                    });
+                    int bau = -1;
+                    while (bau < 0 && bau > cc.getNecesidades().size()) {
+                        System.out.println("Escoga el item que desea eliminar: \n");
+                        bau = new Scanner(System.in).nextInt();
+                    }
+                    cc.getNecesidades().remove(bau);
+
+                case 3:
+                    return 5;
+                case 0:
+                    return 0;
+
+            }
+        }
+
         return 0;
     }
 
@@ -137,7 +170,7 @@ public class SOS {
                     String cont = sc.next();
                     if (usuario.equals(us) && contraseña.equals(cont)) {
                         a = false;
-                        
+
                         System.out.println("Inicio sesion exitosamente");
                     } else {
                         System.out.println("Usuario o contraseña incorrecta");
@@ -148,8 +181,8 @@ public class SOS {
                 int b = mostrarMenuAdmin(centros);
                 if (b == 5) {
                     op = 5;
-                }else if (b==0){
-                    op=0;
+                } else if (b == 0) {
+                    op = 0;
                 }
 
             } else if (n == 2) {
@@ -171,16 +204,15 @@ public class SOS {
                         System.out.println(" ");
                     }
                 }
-              int b=mostrarMenuUsuario(centros);
-               if (b == 5) {
+                int b = mostrarMenuUsuario(centros);
+                if (b == 5) {
                     op = 5;
-                }else if (b==0){
-                    op=0;
+                } else if (b == 0) {
+                    op = 0;
                 }
-              
-            }
-            else{
-                op=3;
+
+            } else {
+                op = 3;
             }
         }
         System.out.println("Chao");
@@ -198,7 +230,7 @@ public class SOS {
             System.out.println(sb.toString());
             Scanner sc = new Scanner(System.in);
             opt = sc.nextInt();
-            switch(opt){
+            switch (opt) {
                 case 1:
                     return enlistar(centros);
                 case 2:
@@ -207,33 +239,33 @@ public class SOS {
                     return 5;
                 default:
                     break;
-                    
+
             }
         }
 
         return 0;
     }
-    
-    public static int donar(CA centro){
-        System.out.println("El centro de acopio "+ centro.getNombre()+" requiere de:\n");
+
+    public static int donar(CA centro) {
+        System.out.println("El centro de acopio " + centro.getNombre() + " requiere de:\n");
         centro.getNecesidades().forEach(necesidad -> {
             System.out.println(necesidad);
         });
         int opt = -1;
-        while(opt <0 && opt > centro.getNecesidades().size()){
+        while (opt < 0 && opt > centro.getNecesidades().size()) {
             System.out.println("Escoga el item que desea donar: \n");
             opt = new Scanner(System.in).nextInt();
         }
         System.out.println("Su donación fue realizada con éxito! Gracias por ser solidario.");
         return 5;
     }
-    
-    public static CA escogerCentro(ArrayList<CA> centros){
+
+    public static CA escogerCentro(ArrayList<CA> centros) {
         enlistar(centros);
-        int opt= -1;
-        while(opt <0 && opt > centros.size()){
-        System.out.println("Escoge un centro:");
-        opt = (new Scanner(System.in)).nextInt();
+        int opt = -1;
+        while (opt < 0 && opt > centros.size()) {
+            System.out.println("Escoge un centro:");
+            opt = (new Scanner(System.in)).nextInt();
         }
         return centros.get(opt);
     }
