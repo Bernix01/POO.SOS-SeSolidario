@@ -25,7 +25,7 @@ public class SOS {
     /**
      * @param args the command line arguments
      */
-    public static int mostrarMenuAdmin(ArrayList centros) {
+    public static int mostrarMenuAdmin(ArrayList<CA> centros) {
 
         while (select != 0) {
 
@@ -44,7 +44,7 @@ public class SOS {
                 case 1:
                     return registrarCentroAcopio(centros);
                 case 2:
-                    return 22;
+                    return administrarCentroAcopio(centros);
                 case 3:
                     return 5;
                 case 0:
@@ -59,7 +59,7 @@ public class SOS {
         return 0;
     }
 
-    public static int registrarCentroAcopio(ArrayList centros) {
+    public static int registrarCentroAcopio(ArrayList<CA> centros) {
         StringBuilder vj = new StringBuilder();
         vj.append("Introduzca nombre :");
         nom = scanner.next();
@@ -87,8 +87,24 @@ public class SOS {
 
     }
     
-    public static int administrarCentroAcopio(){
-        
+    public static int administrarCentroAcopio(ArrayList<CA> centros){
+        enlistar(centros);
+        int aca = -1;
+        while (aca != 0){
+            StringBuilder va = new StringBuilder();
+            va.append("¿QUÉ INFORMACIÓN DESEA MODIFICAR?:");
+            va.append("1. Centro de Acopio");
+            va.append("2. Necesidades del Centro de Acopio");
+            va.append("3. Volver");
+            va.append("0. Salir");
+              try {
+                select = Integer.parseInt(JOptionPane.showInputDialog(null, va.toString(), "Opción", 1));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,"Error!");
+            }
+        }    
+            
+        return 0;
     }
 
     public static void main(String[] args) {
