@@ -28,15 +28,16 @@ public class SOS {
 
         while (select != 0) {
 
-            System.out.println("ELIGE UNA OPCION:  \n");
-            System.out.println("1. Registrar Centro de Acopio\n");
-            System.out.println("2. Administrar Centro de Acopio\n");
-            System.out.println("3. Volver\n");
-            System.out.println("0. Salir\n");
+            StringBuilder jv = new StringBuilder();
+            jv.append("ELIGE UNA OPCION:");
+            jv.append("1. Registrar Centro de Acopio");
+            jv.append("2. Administrar Centro de Acopio");
+            jv.append("3. Volver");
+            jv.append("0. Salir");
             try {
-                select = Integer.parseInt(scanner.nextLine());
+                select = Integer.parseInt(JOptionPane.showInputDialog(null, jv.toString(), "Opción", 1));
             } catch (Exception e) {
-                System.out.println("Error!");
+                JOptionPane.showMessageDialog(null,"Error!");
             }
             switch (select) {
                 case 1:
@@ -58,18 +59,19 @@ public class SOS {
     }
 
     public static int registrarCentroAcopio() {
-        System.out.println("Introduzca nombre :\n");
+        StringBuilder vj = new StringBuilder();
+        vj.append("Introduzca nombre :");
         nom = scanner.next();
-        System.out.println("Introduzca direccion :\n");
+        vj.append("Introduzca direccion :");
         dir = scanner.next();
-        System.out.println("Introduzca cuenta de Facebook :\n");
+        vj.append("Introduzca cuenta de Facebook :");
         fb = scanner.next();
-        System.out.println("Introduzca cuenta de Twitter :\n");
+        vj.append("Introduzca cuenta de Twitter :");
         twi = scanner.next();
-        System.out.println("Introduzca latitud :\n");
-        lat = Long.parseLong(scanner.nextLine());
-        System.out.println("Introduzca longitud :\n");
-        lon = Long.parseLong(scanner.nextLine());
+        vj.append("Introduzca latitud :");
+        lat = Long.parseLong(JOptionPane.showInputDialog(null, vj.toString(), "Latitud", 1));
+        vj.append("Introduzca longitud :");
+        lon = Long.parseLong(JOptionPane.showInputDialog(null, vj.toString(), "Longitud", 1));
         return 0;
 
     }
