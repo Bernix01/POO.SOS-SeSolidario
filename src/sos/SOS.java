@@ -86,6 +86,10 @@ public class SOS {
         return 0;
 
     }
+    
+    public static int administrarCentroAcopio(){
+        
+    }
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -217,7 +221,7 @@ public class SOS {
         centros.forEach(centro -> {
             System.out.println(centro);
         });
-        System.out.println("presione cualquier letra para salir");
+        System.out.println("Presione cualquier letra para salir");
         (new Scanner(System.in)).next();
         return 555;
     }
