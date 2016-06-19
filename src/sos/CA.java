@@ -140,19 +140,19 @@ public class CA {
     public String forArchive() {
         StringBuilder sb = new StringBuilder();
         sb.append(id);
-        sb.append("\\|");
+        sb.append("|");
         sb.append(latitud);
-        sb.append("\\|");
+        sb.append("|");
         sb.append(longitud);
-        sb.append("\\|");
+        sb.append("|");
         sb.append(nombre);
-        sb.append("\\|");
+        sb.append("|");
         sb.append(direccion);
-        sb.append("\\|");
+        sb.append("|");
         sb.append(fb);
-        sb.append("\\|");
+        sb.append("|");
         sb.append(twitter);
-        sb.append("\\|");
+        sb.append("|");
         return sb.toString();
     }
 
