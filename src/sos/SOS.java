@@ -50,25 +50,22 @@ public class SOS {
                                         
 				}
             
-                                
-                                
-                            
             }
             return 0;
         }
     
     private int registrarCentroAcopio(){
-                System.out.println("Introduzca nombre :");
+                System.out.println("Introduzca nombre :\n");
                 nom = scanner.next();
-                System.out.println("Introduzca direccion :");
+                System.out.println("Introduzca direccion :\n");
                 dir = scanner.next();
-                System.out.println("Introduzca nombre :");
+                System.out.println("Introduzca cuenta de Facebook :\n");
                 fb = scanner.next();
-                System.out.println("Introduzca nombre :");
+                System.out.println("Introduzca cuenta de Twitter :\n");
                 twi = scanner.next();
-                System.out.println("Introduzca latitud :");
+                System.out.println("Introduzca latitud :\n");
 		lat = Long.parseLong(scanner.nextLine());
-                System.out.println("Introduzca longitud :");
+                System.out.println("Introduzca longitud :\n");
 		lon = Long.parseLong(scanner.nextLine());
         return 0;
     
