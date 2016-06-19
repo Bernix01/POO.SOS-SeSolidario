@@ -24,7 +24,7 @@ public class SOS {
     /**
      * @param args the command line arguments
      */
-    public static int mostrarMenuAdmin() {
+    public static int mostrarMenuAdmin(ArrayList centros) {
 
         while (select != 0) {
 
@@ -116,7 +116,7 @@ public class SOS {
                         System.out.println(" ");
                     }
                 }
-                int b = mostrarMenuAdmin();
+                int b = mostrarMenuAdmin(centros);
                 if (b == 5) {
                     op = 5;
                 }else if (b==0){
