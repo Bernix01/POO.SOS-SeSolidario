@@ -119,6 +119,8 @@ public class SOS {
                 int b = mostrarMenuAdmin();
                 if (b == 5) {
                     op = 5;
+                }else if (b==0){
+                    op=0;
                 }
 
             } else if (n == 2) {
@@ -143,9 +145,16 @@ public class SOS {
               int b=mostrarMenuUsuario(centros);
                if (b == 5) {
                     op = 5;
+                }else if (b==0){
+                    op=0;
                 }
+              
+            }
+            else{
+                op=3;
             }
         }
+        System.out.println("Chao");
 
     }
 
