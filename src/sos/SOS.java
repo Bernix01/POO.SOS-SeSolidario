@@ -143,19 +143,52 @@ public class SOS {
             StringBuilder sb = new StringBuilder();
             sb.append(" 1. Ver centros de acopios \n");
             sb.append(" 2. Donar                  ");
+            sb.append(" 3. Volver                  ");
+            sb.append(" 0. Salir                  ");
+            System.out.println(sb.toString());
             Scanner sc = new Scanner(System.in);
             opt = sc.nextInt();
             switch(opt){
                 case 1:
-                    enlistar();
+                    return enlistar(centros);
+                case 2:
+                    return donar(escogerCentro(centros));
+                case 3:
+                    return 5;
+                default:
+                    break;
+                    
             }
         }
 
         return 0;
     }
+    
+    public static int donar(CA centro){
+        System.out.println("El centro de acopio "+ centro.getNombre()+" requiere de:\n");
+        centro.getNecesidades().forEach(necesidad -> {
+            System.out.println(necesidad);
+        });
+        return 5;
+    }
+    
+    public static CA escogerCentro(ArrayList<CA> centros){
+        enlistar(centros);
+        int opt= -1;
+        while(opt <0 && opt > centros.size()){
+        System.out.println("Escoge un centro:");
+        opt = (new Scanner(System.in)).nextInt();
+        }
+        return centros.get(opt);
+    }
 
-    private static void enlistar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private static int enlistar(ArrayList<CA> centros) {
+        centros.forEach(centro -> {
+            System.out.println(centro);
+        });
+        System.out.println("presione cualquier letra para salir");
+        (new Scanner(System.in)).next();
+        return 555;
     }
 
 }
