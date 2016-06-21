@@ -44,6 +44,11 @@ public class DatabaseHelper {
                 String dir = datos[4];
                 String fb = datos[5];
                 String tw = datos[6];
+                ArrayList<Necesidad> necesidades = new ArrayList<>();
+                String necesidades[] = datos[7].split(",");
+                for (int i=0;i<necesidades.size()-1;i++){
+                    //necesidades.add(new) TODO
+                }
                 r = new CA(id, lat, longi, n, dir, fb, tw);
                 lista.add(r);
             }
