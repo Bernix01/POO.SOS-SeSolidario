@@ -153,6 +153,11 @@ public class CA {
         sb.append("|");
         sb.append(twitter);
         sb.append("|");
+        this.necesidades.foreach(necesidad -> {
+            sb.append(necesidad);
+            sb.append(",");
+            });
+        sb.append()
         return sb.toString();
     }
 
