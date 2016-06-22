@@ -327,12 +327,16 @@ public class SOS {
     }
 
     public static int donar(CA centro) {
+        if(centro.getNecesidades().isEmpty()){
+            System.out.println("El centro de acopio no presenta necesidades en este momento.");
+            return 5;
+        }
         System.out.println("El centro de acopio " + centro.getNombre() + " requiere de:\n");
         centro.getNecesidades().forEach(necesidad -> {
             System.out.println(necesidad);
         });
         int opt = -1;
-        while (opt < 0 && opt > centro.getNecesidades().size()) {
+        while (opt < 0 || opt > centro.getNecesidades().size()) {
             System.out.println("Escoga el item que desea donar: \n");
 
             opt = scanner.nextInt();
