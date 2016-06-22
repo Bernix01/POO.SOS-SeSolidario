@@ -36,7 +36,7 @@ public class SOS {
             System.out.println("0. Salir\n");
             select = scanner.nextInt();
             scanner.nextLine();
-            
+
             switch (select) {
                 case 1:
                     registrarCentroAcopio(centros);
@@ -71,7 +71,7 @@ public class SOS {
         lat = scanner.nextFloat();
         System.out.println("Introduzca longitud:\n");
         lon = scanner.nextFloat();
-        
+
         int idtmp = 0;
         System.out.println(lon);
         while (centros.contains(new CA(idtmp))) {
@@ -109,6 +109,8 @@ public class SOS {
 
                 case 1:
                     CA dd = escogerCentro(centros);
+                    if(dd == null)
+                        return 5;
                     System.out.println("Introduzca nuevo nombre:\n");
                     nnom = scanner.nextLine();
                     System.out.println("Introduzca nueva direccion:\n");
@@ -131,7 +133,7 @@ public class SOS {
                         System.out.println("3. Volver\n");
                         System.out.println("0. Salir\n");
                         cau = scanner.nextInt();
-            scanner.nextLine();
+                        scanner.nextLine();
                         switch (cau) {
                             case 1:
                                 int gui = -1;
@@ -145,8 +147,8 @@ public class SOS {
                                     System.out.println("4. Volver\n");
                                     System.out.println("0. Salir\n");
                                     gui = scanner.nextInt();
-            scanner.nextLine();
-                                    
+                                    scanner.nextLine();
+
                                     switch (gui) {
 
                                         case 1:
@@ -159,10 +161,10 @@ public class SOS {
                                             ne.setTipo(Necesidad.tipos_necesidad.viveres);
                                             break;
                                         case 4:
-                                            
+
                                             return 5;
                                         case 0:
-                                            
+
                                             return 0;
                                     }
                                     System.out.println("INGRESE EL ITEM QUE DESEA AGREGAR:\n");
@@ -186,7 +188,7 @@ public class SOS {
                                     bau = scanner.nextInt();
                                     scanner.nextLine();
                                 }
-                                
+
                                 cc.getNecesidades().remove(bau);
                         }
                     }
@@ -212,10 +214,10 @@ public class SOS {
             System.out.println("1. Ingresar como administrador");
             System.out.println("2. Ingresar como usuario");
             System.out.println("3. Salir");
-            
+
             System.out.print("Introduzca La opcion a ejecutar: ");
             int n = scanner.nextInt();
-                                    scanner.nextLine();
+            scanner.nextLine();
             switch (n) {
                 case 1: {
                     System.out.println("Administrador");
@@ -263,7 +265,7 @@ public class SOS {
                             System.out.println("Intentelo de nuevo");
                             System.out.println(" ");
                         }
-                        
+
                     }
                     int b = mostrarMenuUsuario(centros);
                     if (b == 5) {
@@ -292,15 +294,17 @@ public class SOS {
             sb.append(" 3. Volver                  ");
             sb.append(" 0. Salir                  ");
             System.out.println(sb.toString());
-            
+
             opt = scanner.nextInt();
-            
-                                    scanner.nextLine();
+
+            scanner.nextLine();
             switch (opt) {
                 case 1:
-                    return enlistar(centros);
+                    enlistar(centros);
+                    break;
                 case 2:
                     donar(escogerCentro(centros));
+                    break;
                 case 3:
                     return 5;
                 default:
@@ -320,10 +324,10 @@ public class SOS {
         int opt = -1;
         while (opt < 0 && opt > centro.getNecesidades().size()) {
             System.out.println("Escoga el item que desea donar: \n");
-            
+
             opt = scanner.nextInt();
             scanner.nextLine();
-            
+
         }
         System.out.println("Su donación fue realizada con éxito! Gracias por ser solidario.");
         return 5;
@@ -334,22 +338,23 @@ public class SOS {
         int opt = -1;
         while (opt < 0 && opt > centros.size()) {
             System.out.println("Escoge un centro:");
-            
+
             opt = scanner.nextInt();
             scanner.nextLine();
-            
+
         }
-        return centros.get(opt);
+        return opt != -1 ? centros.get(opt) : null;
     }
 
     private static int enlistar(ArrayList<CA> centros) {
+        if (centros.isEmpty()) {
+            System.out.println("No existen centros.");
+            return 555;
+        }
         centros.forEach(centro -> {
             System.out.println(centro);
         });
-        System.out.println("Presione cualquier letra para salir");
-        
-        scanner.nextLine();
-        
+
         return 555;
     }
 

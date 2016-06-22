@@ -40,6 +40,18 @@ public class CA {
     }
 
     @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n#################################");
+        sb.append("\n  Nombre:     "+this.nombre);
+        sb.append("\n  Direccion:  "+this.direccion);
+        sb.append("\n  Facebook:   "+this.fb);
+        sb.append("\n  Twitter:    "+this.twitter);
+        sb.append("\n");
+        return sb.toString();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
