@@ -38,8 +38,8 @@ public class DatabaseHelper {
             while ((linea = br.readLine()) != null) {
                 datos = linea.split("\\|");
                 int id = Integer.parseInt(datos[0]);
-                long lat = Long.parseLong(datos[1]);
-                long longi = Long.parseLong(datos[2]);
+                float lat = Float.parseFloat(datos[1]);
+                float longi = Float.parseFloat(datos[2]);
                 String n = datos[3];
                 String dir = datos[4];
                 String fb = datos[5];
