@@ -29,16 +29,15 @@ public class SOS {
 
         while (select != 0) {
 
-            StringBuilder jv = new StringBuilder();
-            jv.append("ELIGE UNA OPCION:");
-            jv.append("1. Registrar Centro de Acopio");
-            jv.append("2. Administrar Centro de Acopio");
-            jv.append("3. Volver");
-            jv.append("0. Salir");
+            System.out.println("ELIGE UNA OPCION:\n");
+            System.out.println("1. Registrar Centro de Acopio\n");
+            System.out.println("2. Administrar Centro de Acopio\n");
+            System.out.println("3. Volver\n");
+            System.out.println("0. Salir\n");
             try {
-                select = Integer.parseInt(JOptionPane.showInputDialog(null, jv.toString(), "Opción", 1));
+                select = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error!");
+                System.out.println("OOPS! Error!\n");
             }
             switch (select) {
                 case 1:
@@ -60,17 +59,17 @@ public class SOS {
     }
 
     public static int registrarCentroAcopio(ArrayList<CA> centros) {
-        System.out.println("Introduzca nombre :");
+        System.out.println("Introduzca nombre:\n");
         nom = scanner.next();
-        System.out.println("Introduzca direccion :");
+        System.out.println("Introduzca direccion:\n");
         dir = scanner.next();
-        System.out.println("Introduzca cuenta de Facebook :");
+        System.out.println("Introduzca cuenta de Facebook:\n");
         fb = scanner.next();
-        System.out.println("Introduzca cuenta de Twitter :");
+        System.out.println("Introduzca cuenta de Twitter:\n");
         twi = scanner.next();
-        System.out.println("Introduzca latitud :");
+        System.out.println("Introduzca latitud:\n");
         lat = scanner.nextFloat();
-        System.out.println("Introduzca longitud :");
+        System.out.println("Introduzca longitud:\n");
         lon = scanner.nextFloat();
         int idtmp = 0;
         System.out.println(lon);
@@ -94,28 +93,27 @@ public class SOS {
     public static int administrarCentroAcopio(ArrayList<CA> centros) {
         int aca = -1;
         while (aca != 0) {
-            StringBuilder va = new StringBuilder();
-            va.append("¿QUÉ INFORMACIÓN DESEA MODIFICAR?:");
-            va.append("1. Centro de Acopio");
-            va.append("2. Necesidades del Centro de Acopio");
-            va.append("3. Volver");
-            va.append("0. Salir");
+            System.out.println("¿QUÉ INFORMACIÓN DESEA MODIFICAR?:\n");
+            System.out.println("1. Centro de Acopio\n");
+            System.out.println("2. Necesidades del Centro de Acopio\n");
+            System.out.println("3. Volver\n");
+            System.out.println("0. Salir\n");
             try {
-                aca = Integer.parseInt(JOptionPane.showInputDialog(null, va.toString(), "Opción", 1));
+                aca = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error!");
+                System.out.println("OOPS! Error!\n");
             }
             switch (aca) {
 
                 case 1:
                     CA dd = escogerCentro(centros);
-                    System.out.println("Introduzca nuevo nombre :");
+                    System.out.println("Introduzca nuevo nombre:\n");
                     nnom = scanner.next();
-                    System.out.println("Introduzca nueva direccion :");
+                    System.out.println("Introduzca nueva direccion:\n");
                     ndir = scanner.next();
-                    System.out.println("Introduzca nueva latitud :");
+                    System.out.println("Introduzca nueva latitud:\n");
                     nlat = scanner.nextFloat();
-                    System.out.println("Introduzca nueva longitud :");
+                    System.out.println("Introduzca nueva longitud:\n");
                     nlon = scanner.nextFloat();
                     dd.setNombre(nnom);
                     dd.setDireccion(ndir);
@@ -125,16 +123,15 @@ public class SOS {
                 case 2:
                     int cau = -1;
                     while (cau != 0) {
-                        StringBuilder ja = new StringBuilder();
-                        ja.append("¿DESEA AGREGAR O ELIMINAR NECESIDAD?:\n");
-                        ja.append("1. Agregar\n");
-                        ja.append("2. Eliminar\n");
-                        ja.append("3. Volver\n");
-                        ja.append("0. Salir\n");
+                        System.out.println("¿DESEA AGREGAR O ELIMINAR NECESIDAD?:\n");
+                        System.out.println("1. Agregar\n");
+                        System.out.println("2. Eliminar\n");
+                        System.out.println("3. Volver\n");
+                        System.out.println("0. Salir\n");
                         try {
-                            cau = Integer.parseInt(JOptionPane.showInputDialog(null, ja.toString(), "Opción", 1));
+                            cau = Integer.parseInt(scanner.nextLine());
                         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, "Error!");
+                            System.out.println("OOPS! Error!\n");
                         }
                         switch (cau) {
                             case 1:
@@ -142,16 +139,16 @@ public class SOS {
                                 Necesidad ne = new Necesidad(Necesidad.tipos_necesidad.standard,0,null);
                                 while (cau != 0) {
                                     StringBuilder tu = new StringBuilder();
-                                    tu.append("Elija el tipo de necesidad: \n");
-                                    tu.append("1. Aseo\n");
-                                    tu.append("2. Ropa\n");
-                                    tu.append("3. Viveres\n");
-                                    ja.append("4. Volver\n");
-                                    tu.append("0. Salir\n");
+                                    System.out.println("Elija el tipo de necesidad: \n");
+                                    System.out.println("1. Aseo\n");
+                                    System.out.println("2. Ropa\n");
+                                    System.out.println("3. Viveres\n");
+                                    System.out.println("4. Volver\n");
+                                    System.out.println("0. Salir\n");
                                     try {
-                                        gui = Integer.parseInt(JOptionPane.showInputDialog(null, ja.toString(), "Opción", 1));
+                                        gui = Integer.parseInt(scanner.nextLine());
                                     } catch (Exception e) {
-                                        JOptionPane.showMessageDialog(null, "Error!");
+                                        System.out.println("OOPS! Error!\n");
                                     }
 
                                     switch (gui) {
@@ -170,10 +167,10 @@ public class SOS {
                                         case 0:
                                             return 0;
                                     }
-                                    ja.append("INGRESE EL ITEM QUE DESEA AGREGAR:\n");
+                                    System.out.println("INGRESE EL ITEM QUE DESEA AGREGAR:\n");
                                     String nomb = new Scanner(System.in).nextLine();
                                     ne.setNombre(nomb);
-                                    ja.append("INGRESE LA CANTIDAD QUE DESEA AGREGAR:\n");
+                                    System.out.println("INGRESE LA CANTIDAD QUE DESEA AGREGAR:\n");
                                     int cant = new Scanner(System.in).nextInt();
                                     ne.setCantidad(cant);
                                 }
