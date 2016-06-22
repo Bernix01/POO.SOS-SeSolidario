@@ -45,11 +45,29 @@ public class DatabaseHelper {
                 String fb = datos[5];
                 String tw = datos[6];
                 ArrayList<Necesidad> necesidades = new ArrayList<>();
-                String necesidades[] = datos[7].split(",");
-                for (int i=0;i<necesidades.size()-1;i++){
-                    //necesidades.add(new) TODO
-                }
                 r = new CA(id, lat, longi, n, dir, fb, tw);
+                String necesidadesstr[] = datos[7].split(",");
+                for (int i = 0; i < necesidadesstr.length - 1; i++) {
+                    Necesidad necesidad;
+                    switch (necesidadesstr[0]) {
+                        case "aseo":
+                            necesidad = new Aseo(Integer.parseInt(necesidadesstr[1]), necesidadesstr[2]);
+                            break;
+                        case "ropa":
+
+                            necesidad = new Ropa(Integer.parseInt(necesidadesstr[1]), necesidadesstr[2]);
+                            break;
+                        case "viveres":
+                            necesidad = new Viveres(Integer.parseInt(necesidadesstr[1]), necesidadesstr[2]);
+                            break;
+
+                        default:
+                            necesidad = new Necesidad(Necesidad.tipos_necesidad.standard, Integer.parseInt(necesidadesstr[1]), necesidadesstr[2]);
+                            break;
+
+                    }
+                    r.agregarNecesidad(necesidad);
+                }
                 lista.add(r);
             }
         } catch (ArrayIndexOutOfBoundsException e) {

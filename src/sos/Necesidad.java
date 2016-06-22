@@ -10,11 +10,11 @@ package sos;
  * @author whugo
  */
 public class Necesidad {
-    
+
     private tipos_necesidad tipo;
     private int cantidad;
     private String nombre;
-    
+
     public tipos_necesidad getTipo() {
         return tipo;
     }
@@ -44,8 +44,14 @@ public class Necesidad {
         this.cantidad = cantidad;
         this.nombre = nombre;
     }
-static enum tipos_necesidad{
-    aseo,ropa,viveres;
-}
+
+    static enum tipos_necesidad {
+        aseo, ropa, viveres, standard;
+    }
+
+    @Override
+    public String toString() {
+        return tipo + "," + cantidad + "," + nombre;
+    }
 
 }

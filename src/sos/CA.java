@@ -108,8 +108,12 @@ public class CA {
         return necesidades;
     }
 
-    public void setNecesidades(List<Necesidad> necesidades) {
-        this.necesidades = necesidades;
+    public void agregarNecesidades(List<Necesidad> necesidades) {
+        this.necesidades.addAll(necesidades);
+    }
+
+    public void agregarNecesidad(Necesidad necesidad) {
+        this.necesidades.add(necesidad);
     }
 
     public CA(int id, float latitud, float longitud, String nombre, String direccion, String fb, String twitter) {
@@ -153,11 +157,10 @@ public class CA {
         sb.append("|");
         sb.append(twitter);
         sb.append("|");
-        this.necesidades.foreach(necesidad -> {
+        this.necesidades.forEach(necesidad -> {
             sb.append(necesidad);
             sb.append(",");
-            });
-        sb.append()
+        });
         return sb.toString();
     }
 
