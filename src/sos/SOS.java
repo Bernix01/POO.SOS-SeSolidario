@@ -7,6 +7,7 @@ package sos;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +22,7 @@ public class SOS {
     static int id;
     static float lat, lon, nlat, nlon;
     static List nec;
+    static ArrayList<CA> centros;
 
     /**
      * @param args the command line arguments
@@ -87,7 +89,7 @@ public class SOS {
         centro.setLatitud(lat);
         centro.setLongitud(lon);
         centros.add(centro);
-        DatabaseHelper.save(centros);
+        save();
         return 5;
 
     }
@@ -109,8 +111,9 @@ public class SOS {
 
                 case 1:
                     CA dd = escogerCentro(centros);
-                    if(dd == null)
+                    if (dd == null) {
                         return 5;
+                    }
                     System.out.println("Introduzca nuevo nombre:\n");
                     nnom = scanner.nextLine();
                     System.out.println("Introduzca nueva direccion:\n");
@@ -123,7 +126,7 @@ public class SOS {
                     dd.setDireccion(ndir);
                     dd.setLatitud(nlat);
                     dd.setLongitud(nlon);
-                    DatabaseHelper.save(centros);
+                    save();
                 case 2:
                     int cau = -1;
                     while (cau != 0) {
@@ -138,45 +141,47 @@ public class SOS {
                             case 1:
                                 int gui = -1;
                                 Necesidad ne = new Necesidad(Necesidad.tipos_necesidad.standard, 0, null);
-                                while (cau != 0) {
-                                    StringBuilder tu = new StringBuilder();
-                                    System.out.println("Elija el tipo de necesidad: \n");
-                                    System.out.println("1. Aseo\n");
-                                    System.out.println("2. Ropa\n");
-                                    System.out.println("3. Viveres\n");
-                                    System.out.println("4. Volver\n");
-                                    System.out.println("0. Salir\n");
-                                    gui = scanner.nextInt();
-                                    scanner.nextLine();
+                                StringBuilder tu = new StringBuilder();
+                                System.out.println("Elija el tipo de necesidad: \n");
+                                System.out.println("1. Aseo\n");
+                                System.out.println("2. Ropa\n");
+                                System.out.println("3. Viveres\n");
+                                System.out.println("4. Volver\n");
+                                System.out.println("0. Salir\n");
+                                gui = scanner.nextInt();
+                                scanner.nextLine();
 
-                                    switch (gui) {
+                                switch (gui) {
 
-                                        case 1:
-                                            ne.setTipo(Necesidad.tipos_necesidad.aseo);
-                                            break;
-                                        case 2:
-                                            ne.setTipo(Necesidad.tipos_necesidad.ropa);
-                                            break;
-                                        case 3:
-                                            ne.setTipo(Necesidad.tipos_necesidad.viveres);
-                                            break;
-                                        case 4:
+                                    case 1:
+                                        ne.setTipo(Necesidad.tipos_necesidad.aseo);
+                                        break;
+                                    case 2:
+                                        ne.setTipo(Necesidad.tipos_necesidad.ropa);
+                                        break;
+                                    case 3:
+                                        ne.setTipo(Necesidad.tipos_necesidad.viveres);
+                                        break;
+                                    case 4:
 
-                                            return 5;
-                                        case 0:
+                                        return 5;
+                                    case 0:
 
-                                            return 0;
-                                    }
-                                    System.out.println("INGRESE EL ITEM QUE DESEA AGREGAR:\n");
-                                    String nomb = scanner.nextLine();
-                                    ne.setNombre(nomb);
-                                    System.out.println("INGRESE LA CANTIDAD QUE DESEA AGREGAR:\n");
-                                    int cant = scanner.nextInt();
-                                    scanner.nextLine();
-                                    ne.setCantidad(cant);
+                                        return 0;
                                 }
+                                System.out.println("INGRESE EL ITEM QUE DESEA AGREGAR:\n");
+                                String nomb = scanner.nextLine();
+                                ne.setNombre(nomb);
+                                System.out.println("INGRESE LA CANTIDAD QUE DESEA AGREGAR:\n");
+                                int cant = scanner.nextInt();
+                                scanner.nextLine();
+                                ne.setCantidad(cant);
+
                                 CA ty = escogerCentro(centros);
                                 ty.getNecesidades().add(ne);
+                                System.out.println("Necesidad agregada exitósamente!");
+                                save();
+                                break;
                             case 2:
                                 CA cc = escogerCentro(centros);
                                 cc.getNecesidades().forEach(necesidad -> {
@@ -188,8 +193,13 @@ public class SOS {
                                     bau = scanner.nextInt();
                                     scanner.nextLine();
                                 }
-
                                 cc.getNecesidades().remove(bau);
+                                break;
+
+                            case 3:
+                                return 5;
+                            case 0:
+                                return 0;
                         }
                     }
 
@@ -206,7 +216,7 @@ public class SOS {
 
     public static void main(String[] args) {
         // TODO code application logic here
-        ArrayList<CA> centros = (ArrayList<CA>) DatabaseHelper.loadCA();
+        centros = (ArrayList<CA>) DatabaseHelper.loadCA();
         int op = 5;
         while (op == 5) {
             System.out.println("SOS: Se Solidario");
@@ -334,9 +344,9 @@ public class SOS {
     }
 
     public static CA escogerCentro(ArrayList<CA> centros) {
-        enlistar(centros);
+        int enlistar = enlistar(centros);
         int opt = -1;
-        while (opt < 0 && opt > centros.size()) {
+        while (opt < 0 || opt > centros.size()) {
             System.out.println("Escoge un centro:");
 
             opt = scanner.nextInt();
@@ -351,11 +361,17 @@ public class SOS {
             System.out.println("No existen centros.");
             return 555;
         }
+        AtomicInteger c = new AtomicInteger(0);
         centros.forEach(centro -> {
-            System.out.println(centro);
+            System.out.println(c.getAndIncrement() + ":\n" + centro);
+
         });
 
         return 555;
+    }
+    
+    public static void save(){
+        DatabaseHelper.save(centros);
     }
 
 }

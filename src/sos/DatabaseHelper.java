@@ -46,6 +46,9 @@ public class DatabaseHelper {
                 String tw = datos[6];
                 ArrayList<Necesidad> necesidades = new ArrayList<>();
                 r = new CA(id, lat, longi, n, dir, fb, tw);
+                lista.add(r);
+                if(datos.length < 8)
+                    continue;
                 String necesidadesstr[] = datos[7].split(",");
                 for (int i = 0; i < necesidadesstr.length - 1; i++) {
                     Necesidad necesidad;
@@ -68,7 +71,6 @@ public class DatabaseHelper {
                     }
                     r.agregarNecesidad(necesidad);
                 }
-                lista.add(r);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Archivo con mal formato");
