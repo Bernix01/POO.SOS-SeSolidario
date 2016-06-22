@@ -60,13 +60,13 @@ public class SOS {
 
     public static int registrarCentroAcopio(ArrayList<CA> centros) {
         System.out.println("Introduzca nombre:\n");
-        nom = scanner.next();
+        nom = scanner.nextLine();
         System.out.println("Introduzca direccion:\n");
-        dir = scanner.next();
+        dir = scanner.nextLine();
         System.out.println("Introduzca cuenta de Facebook:\n");
-        fb = scanner.next();
+        fb = scanner.nextLine();
         System.out.println("Introduzca cuenta de Twitter:\n");
-        twi = scanner.next();
+        twi = scanner.nextLine();
         System.out.println("Introduzca latitud:\n");
         lat = scanner.nextFloat();
         System.out.println("Introduzca longitud:\n");
@@ -108,9 +108,9 @@ public class SOS {
                 case 1:
                     CA dd = escogerCentro(centros);
                     System.out.println("Introduzca nuevo nombre:\n");
-                    nnom = scanner.next();
+                    nnom = scanner.nextLine();
                     System.out.println("Introduzca nueva direccion:\n");
-                    ndir = scanner.next();
+                    ndir = scanner.nextLine();
                     System.out.println("Introduzca nueva latitud:\n");
                     nlat = scanner.nextFloat();
                     System.out.println("Introduzca nueva longitud:\n");
@@ -221,9 +221,9 @@ public class SOS {
                 String contraseña = "@ministrador";
                 while (a == true) {
                     System.out.println("Introduzca Usuario: ");
-                    String us = sc.next();
+                    String us = sc.nextLine();
                     System.out.println("Introduzca contraseña: ");
-                    String cont = sc.next();
+                    String cont = sc.nextLine();
                     if (usuario.equals(us) && contraseña.equals(cont)) {
                         a = false;
 
@@ -248,9 +248,9 @@ public class SOS {
                 String contraseña = "@usuario";
                 while (a == true) {
                     System.out.println("Introduzca Usuario: ");
-                    String us = sc.next();
+                    String us = sc.nextLine();
                     System.out.println("Introduzca contraseña: ");
-                    String cont = sc.next();
+                    String cont = sc.nextLine();
                     if (usuario.equals(us) && contraseña.equals(cont)) {
                         a = false;
                         System.out.println("Inicio sesion exitosamente");
@@ -331,7 +331,7 @@ public class SOS {
             System.out.println(centro);
         });
         System.out.println("Presione cualquier letra para salir");
-        (new Scanner(System.in)).next();
+        (new Scanner(System.in)).nextLine();
         return 555;
     }
 
