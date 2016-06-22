@@ -5,6 +5,7 @@
  */
 package sos;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class CA {
     public int getId() {
         return id;
     }
-    private List<Necesidad> necesidades;
+    private List<Necesidad> necesidades = new ArrayList();
 
     @Override
     public int hashCode() {
