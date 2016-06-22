@@ -149,33 +149,33 @@ public class SOS {
                             ja.append("4. Volver\n");
                             tu.append("0. Salir\n");
                              try {
-                        gui = Integer.parseInt(JOptionPane.showInputDialog(null, ja.toString(), "Opción", 1));
-                        } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, "Error!");
-                        }
+                                gui = Integer.parseInt(JOptionPane.showInputDialog(null, ja.toString(), "Opción", 1));
+                             } catch (Exception e) {
+                                 JOptionPane.showMessageDialog(null, "Error!");
+                             }
                             
-                        switch (gui) {  
+                                switch (gui) {  
                             
-                            case 1:
-                                ne.setTipo(Necesidad.tipos_necesidad.aseo);
-                            case 2: 
-                                ne.setTipo(Necesidad.tipos_necesidad.ropa);
-                            case 3:
-                                ne.setTipo(Necesidad.tipos_necesidad.viveres);    
-                            case 4:
-                                return 5;
-                            case 0:   
-                                return 0;
-                        }   
-                        ja.append("INGRESE EL ITEM QUE DESEA AGREGAR:\n");
-                        String nomb = new Scanner(System.in).nextLine();
-                        ne.setNombre(nomb);
-                        ja.append("INGRESE LA CANTIDAD QUE DESEA AGREGAR:\n");
-                        int cant = new Scanner(System.in).nextInt();
-                        ne.setCantidad(cant);
-                            }
-                            CA ty = escogerCentro(centros);
-                            ty.getNecesidades().add(ne);
+                                    case 1:
+                                        ne.setTipo(Necesidad.tipos_necesidad.aseo);
+                                    case 2: 
+                                        ne.setTipo(Necesidad.tipos_necesidad.ropa);
+                                    case 3:
+                                        ne.setTipo(Necesidad.tipos_necesidad.viveres);    
+                                    case 4:
+                                        return 5;
+                                    case 0:   
+                                        return 0;
+                                        }   
+                                ja.append("INGRESE EL ITEM QUE DESEA AGREGAR:\n");
+                                String nomb = new Scanner(System.in).nextLine();
+                                ne.setNombre(nomb);
+                                ja.append("INGRESE LA CANTIDAD QUE DESEA AGREGAR:\n");
+                                int cant = new Scanner(System.in).nextInt();
+                                 ne.setCantidad(cant);
+                                        }
+                                CA ty = escogerCentro(centros);
+                                ty.getNecesidades().add(ne);
                             case 2:
                             CA cc = escogerCentro(centros);
                             cc.getNecesidades().forEach(necesidad -> {
@@ -185,15 +185,15 @@ public class SOS {
                                     while (bau < 0 && bau > cc.getNecesidades().size()) {
                                     System.out.println("Escoga el item que desea eliminar: \n");
                                     bau = new Scanner(System.in).nextInt();
+                                     }
+                                 cc.getNecesidades().remove(bau);
+                                }
                             }
-                            cc.getNecesidades().remove(bau);
-                        }
-                    }
 
-                case 3:
-                    return 5;
-                case 0:
-                    return 0;
+                            case 3:
+                                 return 5;
+                            case 0:
+                                 return 0;
 
             }
         }
