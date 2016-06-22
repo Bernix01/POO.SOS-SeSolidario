@@ -34,16 +34,16 @@ public class SOS {
             System.out.println("2. Administrar Centro de Acopio\n");
             System.out.println("3. Volver\n");
             System.out.println("0. Salir\n");
-            try {
-                select = Integer.parseInt(scanner.nextLine());
-            } catch (Exception e) {
-                System.out.println("OOPS! Error!\n");
-            }
+            select = scanner.nextInt();
+            scanner.nextLine();
+            
             switch (select) {
                 case 1:
-                    return registrarCentroAcopio(centros);
+                    registrarCentroAcopio(centros);
+                    break;
                 case 2:
-                    return administrarCentroAcopio(centros);
+                    administrarCentroAcopio(centros);
+                    break;
                 case 3:
                     return 5;
                 case 0:
@@ -71,11 +71,13 @@ public class SOS {
         lat = scanner.nextFloat();
         System.out.println("Introduzca longitud:\n");
         lon = scanner.nextFloat();
+        
         int idtmp = 0;
         System.out.println(lon);
         while (centros.contains(new CA(idtmp))) {
             System.out.println(idtmp);
             idtmp = ThreadLocalRandom.current().nextInt();
+            scanner.nextLine();
         }
         CA centro = new CA(idtmp);
         centro.setNombre(nom);
@@ -86,7 +88,7 @@ public class SOS {
         centro.setLongitud(lon);
         centros.add(centro);
         DatabaseHelper.save(centros);
-        return 0;
+        return 5;
 
     }
 
@@ -128,15 +130,12 @@ public class SOS {
                         System.out.println("2. Eliminar\n");
                         System.out.println("3. Volver\n");
                         System.out.println("0. Salir\n");
-                        try {
-                            cau = Integer.parseInt(scanner.nextLine());
-                        } catch (Exception e) {
-                            System.out.println("OOPS! Error!\n");
-                        }
+                        cau = scanner.nextInt();
+            scanner.nextLine();
                         switch (cau) {
                             case 1:
                                 int gui = -1;
-                                Necesidad ne = new Necesidad(Necesidad.tipos_necesidad.standard,0,null);
+                                Necesidad ne = new Necesidad(Necesidad.tipos_necesidad.standard, 0, null);
                                 while (cau != 0) {
                                     StringBuilder tu = new StringBuilder();
                                     System.out.println("Elija el tipo de necesidad: \n");
@@ -145,12 +144,9 @@ public class SOS {
                                     System.out.println("3. Viveres\n");
                                     System.out.println("4. Volver\n");
                                     System.out.println("0. Salir\n");
-                                    try {
-                                        gui = Integer.parseInt(scanner.nextLine());
-                                    } catch (Exception e) {
-                                        System.out.println("OOPS! Error!\n");
-                                    }
-
+                                    gui = scanner.nextInt();
+            scanner.nextLine();
+                                    
                                     switch (gui) {
 
                                         case 1:
@@ -163,15 +159,18 @@ public class SOS {
                                             ne.setTipo(Necesidad.tipos_necesidad.viveres);
                                             break;
                                         case 4:
+                                            
                                             return 5;
                                         case 0:
+                                            
                                             return 0;
                                     }
                                     System.out.println("INGRESE EL ITEM QUE DESEA AGREGAR:\n");
-                                    String nomb = new Scanner(System.in).nextLine();
+                                    String nomb = scanner.nextLine();
                                     ne.setNombre(nomb);
                                     System.out.println("INGRESE LA CANTIDAD QUE DESEA AGREGAR:\n");
-                                    int cant = new Scanner(System.in).nextInt();
+                                    int cant = scanner.nextInt();
+                                    scanner.nextLine();
                                     ne.setCantidad(cant);
                                 }
                                 CA ty = escogerCentro(centros);
@@ -184,8 +183,10 @@ public class SOS {
                                 int bau = -1;
                                 while (bau < 0 && bau > cc.getNecesidades().size()) {
                                     System.out.println("Escoga el item que desea eliminar: \n");
-                                    bau = new Scanner(System.in).nextInt();
+                                    bau = scanner.nextInt();
+                                    scanner.nextLine();
                                 }
+                                
                                 cc.getNecesidades().remove(bau);
                         }
                     }
@@ -211,67 +212,74 @@ public class SOS {
             System.out.println("1. Ingresar como administrador");
             System.out.println("2. Ingresar como usuario");
             System.out.println("3. Salir");
-            Scanner sc = new Scanner(System.in);
+            
             System.out.print("Introduzca La opcion a ejecutar: ");
-            int n = sc.nextInt();
-            if (n == 1) {
-                System.out.println("Administrador");
-                boolean a = true;
-                String usuario = "adm@hotmail.com";
-                String contraseña = "@ministrador";
-                while (a == true) {
-                    System.out.println("Introduzca Usuario: ");
-                    String us = sc.nextLine();
-                    System.out.println("Introduzca contraseña: ");
-                    String cont = sc.nextLine();
-                    if (usuario.equals(us) && contraseña.equals(cont)) {
-                        a = false;
+            int n = scanner.nextInt();
+                                    scanner.nextLine();
+            switch (n) {
+                case 1: {
+                    System.out.println("Administrador");
+                    boolean a = true;
+                    String usuario = "adm@hotmail.com";
+                    String contraseña = "@ministrador";
+                    while (a == true) {
+                        System.out.println("Introduzca Usuario: ");
+                        String us = scanner.nextLine();
+                        System.out.println("Introduzca contraseña: ");
+                        String cont = scanner.nextLine();
+                        if (usuario.equals(us) && contraseña.equals(cont)) {
+                            a = false;
 
-                        System.out.println("Inicio sesion exitosamente");
-                    } else {
-                        System.out.println("Usuario o contraseña incorrecta");
-                        System.out.println("Intentelo de nuevo");
-                        System.out.println(" ");
+                            System.out.println("Inicio sesion exitosamente");
+                        } else {
+                            System.out.println("Usuario o contraseña incorrecta");
+                            System.out.println("Intentelo de nuevo");
+                            System.out.println(" ");
+                        }
                     }
-                }
-                int b = mostrarMenuAdmin(centros);
-                if (b == 5) {
-                    op = 5;
-                } else if (b == 0) {
-                    op = 0;
-                }
-
-            } else if (n == 2) {
-                System.out.println("Usuario");
-                boolean a = true;
-                String usuario = "usu@hotmail.com";
-                String contraseña = "@usuario";
-                while (a == true) {
-                    System.out.println("Introduzca Usuario: ");
-                    String us = sc.nextLine();
-                    System.out.println("Introduzca contraseña: ");
-                    String cont = sc.nextLine();
-                    if (usuario.equals(us) && contraseña.equals(cont)) {
-                        a = false;
-                        System.out.println("Inicio sesion exitosamente");
-                    } else {
-                        System.out.println("Usuario o contraseña incorrecta");
-                        System.out.println("Intentelo de nuevo");
-                        System.out.println(" ");
+                    int b = mostrarMenuAdmin(centros);
+                    if (b == 5) {
+                        op = 5;
+                    } else if (b == 0) {
+                        op = 0;
                     }
+                    break;
                 }
-                int b = mostrarMenuUsuario(centros);
-                if (b == 5) {
-                    op = 5;
-                } else if (b == 0) {
-                    op = 0;
+                case 2: {
+                    System.out.println("Usuario");
+                    boolean a = true;
+                    String usuario = "usu@hotmail.com";
+                    String contraseña = "@usuario";
+                    while (a == true) {
+                        System.out.println("Introduzca Usuario: ");
+                        String us = scanner.nextLine();
+                        System.out.println("Introduzca contraseña: ");
+                        String cont = scanner.nextLine();
+                        if (usuario.equals(us) && contraseña.equals(cont)) {
+                            a = false;
+                            System.out.println("Inicio sesion exitosamente");
+                        } else {
+                            System.out.println("Usuario o contraseña incorrecta");
+                            System.out.println("Intentelo de nuevo");
+                            System.out.println(" ");
+                        }
+                        
+                    }
+                    int b = mostrarMenuUsuario(centros);
+                    if (b == 5) {
+                        op = 5;
+                    } else if (b == 0) {
+                        op = 0;
+                    }
+                    break;
                 }
-
-            } else {
-                op = 3;
+                default:
+                    op = 3;
+                    break;
             }
         }
         System.out.println("Chao");
+        scanner.close();
 
     }
 
@@ -284,13 +292,15 @@ public class SOS {
             sb.append(" 3. Volver                  ");
             sb.append(" 0. Salir                  ");
             System.out.println(sb.toString());
-            Scanner sc = new Scanner(System.in);
-            opt = sc.nextInt();
+            
+            opt = scanner.nextInt();
+            
+                                    scanner.nextLine();
             switch (opt) {
                 case 1:
                     return enlistar(centros);
                 case 2:
-                    return donar(escogerCentro(centros));
+                    donar(escogerCentro(centros));
                 case 3:
                     return 5;
                 default:
@@ -310,7 +320,10 @@ public class SOS {
         int opt = -1;
         while (opt < 0 && opt > centro.getNecesidades().size()) {
             System.out.println("Escoga el item que desea donar: \n");
-            opt = new Scanner(System.in).nextInt();
+            
+            opt = scanner.nextInt();
+            scanner.nextLine();
+            
         }
         System.out.println("Su donación fue realizada con éxito! Gracias por ser solidario.");
         return 5;
@@ -321,7 +334,10 @@ public class SOS {
         int opt = -1;
         while (opt < 0 && opt > centros.size()) {
             System.out.println("Escoge un centro:");
-            opt = (new Scanner(System.in)).nextInt();
+            
+            opt = scanner.nextInt();
+            scanner.nextLine();
+            
         }
         return centros.get(opt);
     }
@@ -331,7 +347,9 @@ public class SOS {
             System.out.println(centro);
         });
         System.out.println("Presione cualquier letra para salir");
-        (new Scanner(System.in)).nextLine();
+        
+        scanner.nextLine();
+        
         return 555;
     }
 
