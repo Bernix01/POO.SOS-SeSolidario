@@ -139,7 +139,7 @@ public class SOS {
                         switch (cau) {
                             case 1:
                                 int gui = -1;
-                                Necesidad ne = null;
+                                Necesidad ne = new Necesidad(Necesidad.tipos_necesidad.standard,0,null);
                                 while (cau != 0) {
                                     StringBuilder tu = new StringBuilder();
                                     tu.append("Elija el tipo de necesidad: \n");
